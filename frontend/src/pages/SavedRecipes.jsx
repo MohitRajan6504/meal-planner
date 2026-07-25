@@ -34,7 +34,10 @@ export default function SavedRecipes() {
       {loading && <p className="loading-line">Loading...</p>}
 
       {!loading && recipes.length === 0 && !error && (
-        <div className="empty-state">You haven't saved any recipes yet.</div>
+        <div className="empty-state">
+          <span className="empty-icon">📖</span>
+          You haven't saved any recipes yet.
+        </div>
       )}
 
       {recipes.map((recipe) => (

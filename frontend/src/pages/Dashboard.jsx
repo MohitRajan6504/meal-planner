@@ -59,10 +59,18 @@ export default function Dashboard() {
       )}
 
       <div style={{ marginTop: 32 }}>
-        {loading && <p className="loading-line">Asking the AI chef for ideas...</p>}
+        {loading && (
+          <p className="loading-line">
+            Asking the AI chef for ideas
+            <span className="dot" style={{ "--i": 0 }}>.</span>
+            <span className="dot" style={{ "--i": 1 }}>.</span>
+            <span className="dot" style={{ "--i": 2 }}>.</span>
+          </p>
+        )}
 
         {!loading && recipes.length === 0 && !error && (
           <div className="empty-state">
+            <span className="empty-icon">🥘</span>
             Add a few ingredients above and hit "Suggest recipes" to get started.
           </div>
         )}

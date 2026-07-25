@@ -39,60 +39,63 @@ export default function Signup() {
 
       {error && <div className="error-banner">{error}</div>}
 
-      <form onSubmit={handleSubmit}>
-        <div className="field">
-          <label htmlFor="name">Name</label>
-          <input
-            id="name"
-            value={form.name}
-            onChange={(e) => setForm({ ...form, name: e.target.value })}
-            required
-          />
-        </div>
-        <div className="field">
-          <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            type="email"
-            value={form.email}
-            onChange={(e) => setForm({ ...form, email: e.target.value })}
-            required
-          />
-        </div>
-        <div className="field">
-          <label htmlFor="password">Password</label>
-          <PasswordInput
-            id="password"
-            minLength={8}
-            value={form.password}
-            onChange={(e) => setForm({ ...form, password: e.target.value })}
-          />
-        </div>
-
-        <div className="field">
-          <label>Dietary preferences (optional)</label>
-          <div className="tag-row">
-            {DIET_OPTIONS.map((diet) => (
-              <button
-                key={diet}
-                type="button"
-                className="tag"
-                style={{
-                  background: diets.includes(diet) ? "var(--color-herb)" : "var(--color-line)",
-                  color: diets.includes(diet) ? "#fff" : "var(--color-ink)",
-                }}
-                onClick={() => toggleDiet(diet)}
-              >
-                {diet}
-              </button>
-            ))}
+      <div className="auth-card">
+        <form onSubmit={handleSubmit}>
+          <div className="field">
+            <label htmlFor="name">Name</label>
+            <input
+              id="name"
+              value={form.name}
+              onChange={(e) => setForm({ ...form, name: e.target.value })}
+              required
+            />
           </div>
-        </div>
+          <div className="field">
+            <label htmlFor="email">Email</label>
+            <input
+              id="email"
+              type="email"
+              value={form.email}
+              onChange={(e) => setForm({ ...form, email: e.target.value })}
+              required
+            />
+          </div>
+          <div className="field">
+            <label htmlFor="password">Password</label>
+            <PasswordInput
+              id="password"
+              minLength={8}
+              value={form.password}
+              onChange={(e) => setForm({ ...form, password: e.target.value })}
+            />
+          </div>
 
-        <button className="btn" type="submit" disabled={loading}>
-          {loading ? "Creating account..." : "Sign up"}
-        </button>
-      </form>
+          <div className="field">
+            <label>Dietary preferences (optional)</label>
+            <div className="tag-row">
+              {DIET_OPTIONS.map((diet) => (
+                <button
+                  key={diet}
+                  type="button"
+                  className="tag"
+                  style={{
+                    background: diets.includes(diet) ? "var(--color-herb)" : "var(--color-line)",
+                    color: diets.includes(diet) ? "#fff" : "var(--color-ink)",
+                    transition: "background 0.15s var(--ease), transform 0.15s var(--ease)",
+                  }}
+                  onClick={() => toggleDiet(diet)}
+                >
+                  {diet}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <button className="btn" type="submit" disabled={loading} style={{ width: "100%", justifyContent: "center" }}>
+            {loading ? "Creating account..." : "Sign up"}
+          </button>
+        </form>
+      </div>
 
       <p className="subtitle" style={{ marginTop: 20 }}>
         Already have an account? <Link to="/login">Log in</Link>

@@ -33,19 +33,27 @@ export default function Login() {
 
       {error && <div className="error-banner">{error}</div>}
 
-      <form onSubmit={handleSubmit}>
-        <div className="field">
-          <label htmlFor="email">Email</label>
-          <input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        </div>
-        <div className="field">
-          <label htmlFor="password">Password</label>
-          <PasswordInput id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        </div>
-        <button className="btn" type="submit" disabled={loading}>
-          {loading ? "Logging in..." : "Log in"}
-        </button>
-      </form>
+      <div className="auth-card">
+        <form onSubmit={handleSubmit}>
+          <div className="field">
+            <label htmlFor="email">Email</label>
+            <input
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className="field">
+            <label htmlFor="password">Password</label>
+            <PasswordInput id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          </div>
+          <button className="btn" type="submit" disabled={loading} style={{ width: "100%", justifyContent: "center" }}>
+            {loading ? "Logging in..." : "Log in"}
+          </button>
+        </form>
+      </div>
 
       <p className="subtitle" style={{ marginTop: 20 }}>
         No account yet? <Link to="/signup">Sign up</Link>

@@ -31,7 +31,10 @@ export default function PasswordInput({ id, value, onChange, minLength, required
           letterSpacing: "0.04em",
           color: "var(--color-herb-dark)",
           padding: "4px 8px",
+          transition: "color 0.15s ease",
         }}
+        onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-tomato)")}
+        onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-herb-dark)")}
       >
         {visible ? "Hide" : "Show"}
       </button>
