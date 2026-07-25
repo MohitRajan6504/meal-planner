@@ -1,0 +1,352 @@
+/* ============================================================
+   Design tokens — "pantry ledger" aesthetic.
+   Palette: warm paper + deep herb green + egg-yolk mustard accent.
+   Type: Fraunces (recipe-card display serif) + Space Mono (grocery-tag
+   mono for quantities/tags) + Inter (body).
+   ============================================================ */
+:root {
+  --color-paper: #f1ede1;
+  --color-paper-raised: #ffffff;
+  --color-ink: #1f2a24;
+  --color-herb: #2f4b3c;
+  --color-herb-dark: #1c3026;
+  --color-mustard: #e3a72b;
+  --color-mustard-dark: #b9840f;
+  --color-tomato: #c1502e;
+  --color-line: #d9d2bd;
+
+  --font-display: "Fraunces", serif;
+  --font-mono: "Space Mono", monospace;
+  --font-body: "Inter", -apple-system, sans-serif;
+
+  --radius: 4px;
+  --shadow-card: 0 1px 0 var(--color-line), 0 8px 20px -12px rgba(31, 42, 36, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  line-height: 1.5;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input,
+textarea {
+  font-family: inherit;
+}
+
+/* ---------- Layout ---------- */
+.app-shell {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+  width: 100%;
+  flex: 1;
+}
+
+/* ---------- Navbar ---------- */
+.navbar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 28px 24px 24px;
+  max-width: 880px;
+  margin: 0 auto;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.navbar .brand {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--color-herb-dark);
+  text-decoration: none;
+}
+
+.navbar .brand::before {
+  content: "🍲 ";
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.nav-links a,
+.nav-links button {
+  background: none;
+  border: none;
+  color: var(--color-ink);
+  text-decoration: none;
+  padding: 0;
+}
+
+.nav-links a:hover,
+.nav-links button:hover {
+  color: var(--color-tomato);
+}
+
+/* ---------- Headings ---------- */
+h1,
+h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--color-herb-dark);
+  margin: 0 0 8px;
+}
+
+h1 {
+  font-size: 2.1rem;
+}
+
+h2 {
+  font-size: 1.4rem;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-mustard-dark);
+  margin-bottom: 6px;
+  display: block;
+}
+
+.subtitle {
+  color: #5b6660;
+  margin: 0 0 28px;
+  max-width: 46ch;
+}
+
+/* ---------- Forms ---------- */
+.field {
+  margin-bottom: 16px;
+}
+
+.field label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 6px;
+  color: var(--color-herb-dark);
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 11px 13px;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  background: var(--color-paper-raised);
+  font-size: 0.95rem;
+  color: var(--color-ink);
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: 2px solid var(--color-herb);
+  outline-offset: 1px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  border-radius: var(--radius);
+  padding: 11px 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background: var(--color-herb);
+  color: #fff;
+  transition: background 0.15s ease;
+}
+
+.btn:hover {
+  background: var(--color-herb-dark);
+}
+
+.btn:disabled {
+  background: #a9b3ac;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-herb-dark);
+  border: 1px solid var(--color-line);
+}
+
+.btn-secondary:hover {
+  background: var(--color-paper-raised);
+}
+
+.error-banner {
+  background: #fbeae4;
+  border: 1px solid var(--color-tomato);
+  color: #7d3016;
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  font-size: 0.88rem;
+  margin-bottom: 16px;
+}
+
+/* ---------- Ingredient tag input ---------- */
+.tag-input-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  background: var(--color-paper-raised);
+}
+
+.tag-input-wrap input {
+  border: none;
+  flex: 1;
+  min-width: 140px;
+  padding: 4px;
+}
+
+.tag-input-wrap input:focus {
+  outline: none;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  background: var(--color-herb);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tag button {
+  background: none;
+  border: none;
+  color: #fff;
+  opacity: 0.7;
+  font-size: 0.9rem;
+  line-height: 1;
+  padding: 0;
+}
+
+.tag button:hover {
+  opacity: 1;
+}
+
+.tag.missing {
+  background: var(--color-mustard);
+  color: var(--color-ink);
+}
+
+/* ---------- Recipe card: the signature element ---------- */
+.recipe-card {
+  background: var(--color-paper-raised);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  padding: 22px 24px 24px;
+  margin-bottom: 20px;
+  position: relative;
+  border-left: 3px solid var(--color-herb);
+}
+
+.recipe-card .recipe-meta {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-mustard-dark);
+  margin-bottom: 6px;
+}
+
+.recipe-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  margin: 0 0 6px;
+  color: var(--color-herb-dark);
+}
+
+.recipe-card p.desc {
+  color: #4c554f;
+  margin: 0 0 14px;
+  font-size: 0.94rem;
+}
+
+.recipe-card .tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.recipe-card ol {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 0.92rem;
+}
+
+.recipe-card ol li {
+  margin-bottom: 6px;
+}
+
+.recipe-card .card-actions {
+  margin-top: 16px;
+  display: flex;
+  gap: 10px;
+}
+
+/* ---------- Empty / loading states ---------- */
+.empty-state {
+  border: 1px dashed var(--color-line);
+  border-radius: var(--radius);
+  padding: 40px 24px;
+  text-align: center;
+  color: #6b746e;
+  font-size: 0.92rem;
+}
+
+.loading-line {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-mustard-dark);
+}
