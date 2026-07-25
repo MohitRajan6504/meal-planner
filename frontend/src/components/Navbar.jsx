@@ -12,6 +12,7 @@ export default function Navbar() {
 
   return (
     <nav className="navbar">
+      <span className="navbar-spacer" aria-hidden="true" />
       <Link to="/" className="brand">
         Pantry
       </Link>
