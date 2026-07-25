@@ -7,7 +7,16 @@ import recipeRoutes from "./routes/recipeRoutes.js";
 
 const app = express();
 
-app.use(cors());
+// FRONTEND_URL can be a comma-separated list, e.g.
+// "http://localhost:5173,https://your-app.vercel.app"
+// If unset, CORS is left open — fine for local dev, but set this in production.
+const allowedOrigins = process.env.FRONTEND_URL?.split(",").map((s) => s.trim());
+
+app.use(
+  cors({
+    origin: allowedOrigins || true,
+  })
+);
 app.use(express.json());
 
 app.get("/api/health", (req, res) => res.json({ status: "ok" }));

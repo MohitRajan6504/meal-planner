@@ -1,4 +1,8 @@
-const BASE_URL = "/api";
+// In production, set VITE_API_URL to your deployed backend's full URL
+// (e.g. https://your-backend.onrender.com/api).
+// Locally, this stays empty and falls back to "/api", which Vite proxies
+// to http://localhost:5000 (see vite.config.js) — no env setup needed for dev.
+const BASE_URL = import.meta.env.VITE_API_URL || "/api";
 
 function getToken() {
   return localStorage.getItem("mealplanner_token");

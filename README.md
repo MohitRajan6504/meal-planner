@@ -1,6 +1,6 @@
 # Pantry — AI-Powered Meal Planner
 
-![CI](https://github.com/MohitRajan6504/meal-planner/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/YOUR_USERNAME/YOUR_REPO/actions/workflows/ci.yml/badge.svg)
 
 A full MERN stack app where you list the ingredients you have on hand, and
 Google Gemini (via the Gemini API) suggests real, cookable recipes — flagging
