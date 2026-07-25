@@ -6,7 +6,7 @@ A full MERN stack app where you list the ingredients you have on hand, and
 Google Gemini (via the Gemini API) suggests real, cookable recipes — flagging
 which ingredients you already have and which you'd need to buy.
 
-**Live demo:** _add your deployed link here once hosted_
+**Live demo:** [https://meal-planner-sigma-khaki.vercel.app](https://meal-planner-sigma-khaki.vercel.app)
 
 ## Why this project
 
