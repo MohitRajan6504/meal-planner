@@ -1,12 +1,15 @@
 # Pantry — AI-Powered Meal Planner
 
-![CI](https://github.com/MohitRajan6504/meal-planner/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/YOUR_USERNAME/YOUR_REPO/actions/workflows/ci.yml/badge.svg)
 
 A full MERN stack app where you list the ingredients you have on hand, and
 Google Gemini (via the Gemini API) suggests real, cookable recipes — flagging
-which ingredients you already have and which you'd need to buy.
+which ingredients you already have and which you'd need to buy. Also supports
+scanning a photo of your fridge/pantry to auto-detect ingredients, planning
+a full week of dinners with one consolidated shopping list, and per-recipe
+nutrition estimates.
 
-**Live demo:** [https://meal-planner-sigma-khaki.vercel.app](https://meal-planner-sigma-khaki.vercel.app)
+**Live demo:** _add your deployed link here once hosted_
 
 ## Why this project
 
@@ -95,8 +98,11 @@ few ingredients, and click "Suggest recipes."
 | POST | `/api/auth/signup` | No | Create account |
 | POST | `/api/auth/login` | No | Log in, returns JWT |
 | POST | `/api/recipes/generate` | Yes | Generate recipes from ingredients via Gemini |
+| POST | `/api/recipes/weekly-plan` | Yes | Generate a 7-day dinner plan + consolidated shopping list |
+| POST | `/api/recipes/detect-ingredients` | Yes | Detect ingredients from an uploaded photo via Gemini vision |
 | POST | `/api/recipes` | Yes | Save a recipe |
-| GET | `/api/recipes` | Yes | List saved recipes |
+| GET | `/api/recipes` | Yes | List saved recipes (supports `?q=` search and `?maxMinutes=` filter) |
+| GET | `/api/recipes/:id` | Yes | Get a single saved recipe |
 | DELETE | `/api/recipes/:id` | Yes | Delete a saved recipe |
 
 ## Linting, testing & CI
@@ -119,9 +125,5 @@ parallel jobs.
 
 ## Possible extensions
 
-- Parse ingredients from a photo of your fridge (multimodal Gemini input)
-- Weekly meal-plan generation instead of one-off suggestions
-- Auto-generate a consolidated shopping list across multiple saved recipes
-- Nutrition estimates per recipe
 - Deploy: frontend on Vercel/Netlify, backend on Render/Railway, DB on
   MongoDB Atlas

@@ -20,6 +20,7 @@ export default function Navbar() {
         {user ? (
           <>
             <Link to="/">Plan</Link>
+            <Link to="/weekly-plan">Week</Link>
             <Link to="/saved">Saved</Link>
             <button onClick={handleLogout}>Log out</button>
           </>

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function ClockIcon() {
   return (
     <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -39,7 +41,15 @@ export default function RecipeCard({ recipe, onSave, onDelete, saved = false }) 
           </>
         )}
       </span>
-      <h3>{recipe.title}</h3>
+      <h3>
+        {recipe._id ? (
+          <Link to={`/recipes/${recipe._id}`} style={{ color: "inherit", textDecoration: "none" }}>
+            {recipe.title}
+          </Link>
+        ) : (
+          recipe.title
+        )}
+      </h3>
       {recipe.description && <p className="desc">{recipe.description}</p>}
 
       <div className="tag-row">
@@ -61,6 +71,31 @@ export default function RecipeCard({ recipe, onSave, onDelete, saved = false }) 
             <li key={i}>{step}</li>
           ))}
         </ol>
+      )}
+
+      {recipe.nutrition && (
+        <div className="nutrition-row">
+          {recipe.nutrition.caloriesPerServing != null && (
+            <span className="nutrition-stat">
+              <strong>{recipe.nutrition.caloriesPerServing}</strong> cal
+            </span>
+          )}
+          {recipe.nutrition.proteinGrams != null && (
+            <span className="nutrition-stat">
+              <strong>{recipe.nutrition.proteinGrams}g</strong> protein
+            </span>
+          )}
+          {recipe.nutrition.carbsGrams != null && (
+            <span className="nutrition-stat">
+              <strong>{recipe.nutrition.carbsGrams}g</strong> carbs
+            </span>
+          )}
+          {recipe.nutrition.fatGrams != null && (
+            <span className="nutrition-stat">
+              <strong>{recipe.nutrition.fatGrams}g</strong> fat
+            </span>
+          )}
+        </div>
       )}
 
       {(onSave || onDelete) && (

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { api } from "../api/client.js";
 import IngredientInput from "../components/IngredientInput.jsx";
 import RecipeCard from "../components/RecipeCard.jsx";
+import PhotoIngredientScanner from "../components/PhotoIngredientScanner.jsx";
 
 export default function Dashboard() {
   const [ingredients, setIngredients] = useState([]);
@@ -45,6 +46,15 @@ export default function Dashboard() {
       </p>
 
       <IngredientInput ingredients={ingredients} onChange={setIngredients} />
+
+      <PhotoIngredientScanner
+        onDetected={(detected) => {
+          setIngredients((prev) => {
+            const merged = new Set([...prev, ...detected]);
+            return [...merged];
+          });
+        }}
+      />
 
       <div style={{ marginTop: 16 }}>
         <button className="btn" onClick={handleGenerate} disabled={loading || ingredients.length === 0}>

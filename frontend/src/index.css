@@ -79,7 +79,7 @@ textarea {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  padding: 28px 24px 24px;
+  padding: 28px 32px 24px;
   width: 100%;
   border-bottom: 1px solid var(--color-line);
   position: sticky;
@@ -447,6 +447,26 @@ h2 {
 
 .recipe-card ol li {
   margin-bottom: 6px;
+}
+
+.nutrition-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--color-line);
+}
+
+.nutrition-stat {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: #5b6660;
+}
+
+.nutrition-stat strong {
+  color: var(--color-herb-dark);
+  font-weight: 700;
 }
 
 .recipe-card .card-actions {

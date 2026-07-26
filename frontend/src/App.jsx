@@ -4,6 +4,8 @@ import Login from "./pages/Login.jsx";
 import Signup from "./pages/Signup.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import SavedRecipes from "./pages/SavedRecipes.jsx";
+import WeeklyPlan from "./pages/WeeklyPlan.jsx";
+import RecipeDetail from "./pages/RecipeDetail.jsx";
 import { useAuth } from "./context/AuthContext.jsx";
 
 function ProtectedRoute({ children }) {
@@ -32,6 +34,22 @@ export default function App() {
             element={
               <ProtectedRoute>
                 <SavedRecipes />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/weekly-plan"
+            element={
+              <ProtectedRoute>
+                <WeeklyPlan />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/recipes/:id"
+            element={
+              <ProtectedRoute>
+                <RecipeDetail />
               </ProtectedRoute>
             }
           />

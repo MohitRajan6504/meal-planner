@@ -33,7 +33,13 @@ export const api = {
   signup: (payload) => request("/auth/signup", { method: "POST", body: payload, auth: false }),
   login: (payload) => request("/auth/login", { method: "POST", body: payload, auth: false }),
   generateRecipes: (payload) => request("/recipes/generate", { method: "POST", body: payload }),
+  weeklyPlan: (payload) => request("/recipes/weekly-plan", { method: "POST", body: payload }),
+  detectIngredients: (payload) => request("/recipes/detect-ingredients", { method: "POST", body: payload }),
   saveRecipe: (recipe) => request("/recipes", { method: "POST", body: recipe }),
-  listSavedRecipes: () => request("/recipes"),
+  listSavedRecipes: (params = {}) => {
+    const query = new URLSearchParams(params).toString();
+    return request(`/recipes${query ? `?${query}` : ""}`);
+  },
+  getRecipe: (id) => request(`/recipes/${id}`),
   deleteRecipe: (id) => request(`/recipes/${id}`, { method: "DELETE" }),
 };

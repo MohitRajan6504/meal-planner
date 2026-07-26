@@ -17,7 +17,7 @@ app.use(
     origin: allowedOrigins || true,
   })
 );
-app.use(express.json());
+app.use(express.json({ limit: "10mb" })); // raised from Express's 100kb default to allow base64 image uploads
 
 app.get("/api/health", (req, res) => res.json({ status: "ok" }));
 app.use("/api/auth", authRoutes);

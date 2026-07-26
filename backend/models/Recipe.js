@@ -10,6 +10,12 @@ const recipeSchema = new mongoose.Schema(
     steps: { type: [String], default: [] },
     estimatedMinutes: { type: Number, default: null },
     servings: { type: Number, default: null },
+    nutrition: {
+      caloriesPerServing: { type: Number, default: null },
+      proteinGrams: { type: Number, default: null },
+      carbsGrams: { type: Number, default: null },
+      fatGrams: { type: Number, default: null },
+    },
   },
   { timestamps: true }
 );
